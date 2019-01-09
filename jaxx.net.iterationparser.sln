@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jaxx.net.iterationparser", "jaxx.net.iterationparser\jaxx.net.iterationparser.csproj", "{A26EBB6E-D144-4C14-ADA5-CC7788810824}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A26EBB6E-D144-4C14-ADA5-CC7788810824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26EBB6E-D144-4C14-ADA5-CC7788810824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26EBB6E-D144-4C14-ADA5-CC7788810824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26EBB6E-D144-4C14-ADA5-CC7788810824}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0343E29F-4E10-4A44-A42A-4A7318FFBF96}
+	EndGlobalSection
+EndGlobal
