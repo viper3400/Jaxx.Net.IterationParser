@@ -6,6 +6,6 @@ namespace jaxx.net.iterationparser
 {
     public interface IIterationParser
     {
-        TestResultModel ParseTestResult(string result);
+        TestResultModel ParseIterationString(string result, RegExSelector selector = null, string lineDelimiter = null);
     }
 }
