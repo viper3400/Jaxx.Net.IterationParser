@@ -114,9 +114,25 @@ namespace jaxx.net.iterationparser
             return Regex.Split(input, lineDelimiter);
         }
 
-        TestResultModel IIterationParser.ParseIterationString(string result, RegExSelector selector, string lineDelimiter)
+        public List<IterationModel> ParseTestResult(string input, RegExSelector selector = null, string lineDelimiter = null)
         {
-            throw new NotImplementedException();
+            var resultModel = new List<IterationModel>();
+
+            var iterations = SplitIterationLines(input, lineDelimiter);
+            foreach (var iterationLine in iterations)
+            {
+                var iterationModel = new IterationModel
+                {
+                    IterationCount = GetDefaultIterationCount(iterationLine),
+                    IterationDate = GetIterationDate(iterationLine),
+                    IterationResult = GetDefaultIterationResult(iterationLine),
+                    IterationType = GetDefaultIterationType(iterationLine)
+                };
+
+                resultModel.Add(iterationModel);
+            }
+
+            return resultModel;
         }
     }
 }

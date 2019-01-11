@@ -8,6 +8,28 @@ namespace jaxx.net.iterationparser.tests
     public class DefaultIterationParserShould
     {
         [Fact]
+        public void ParseTestResult()
+        {
+            var inputBuilder = new StringBuilder();
+            inputBuilder.AppendLine("QA TL1; 19.08.2018; PASSED");
+            inputBuilder.AppendLine("QA TL2; 20.08.2018; COND");
+            inputBuilder.Append("QA TL1; 21.08.2018; PASSED");
+            var input = inputBuilder.ToString();
+
+            var parser = new DefaultIterationParser();
+            var actual = parser.ParseTestResult(input);
+
+            Assert.Equal(3, actual.Count());
+
+            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
+            Assert.Equal(2, actual[1].IterationCount);
+            Assert.Equal("COND", actual[1].IterationResult);
+            Assert.Equal("QA TL2", actual[1].IterationType);
+
+
+        }
+
+        [Fact]
         public void ParseIterationString()
         {
             string input = "QA TL12;09.01.2018;FAILED";
