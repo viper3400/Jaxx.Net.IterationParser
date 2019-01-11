@@ -114,25 +114,49 @@ namespace jaxx.net.iterationparser
             return Regex.Split(input, lineDelimiter);
         }
 
-        public List<IterationModel> ParseTestResult(string input, RegExSelector selector = null, string lineDelimiter = null)
+        public List<IterationModel> ParseTestResult(string input, IterationRegExSelectorModel selectorModel = null, string lineDelimiter = null)
         {
             var resultModel = new List<IterationModel>();
 
             var iterations = SplitIterationLines(input, lineDelimiter);
             foreach (var iterationLine in iterations)
             {
-                var iterationModel = new IterationModel
+                IterationModel iterationModel;
+                if (selectorModel == null)
                 {
-                    IterationCount = GetDefaultIterationCount(iterationLine),
-                    IterationDate = GetIterationDate(iterationLine),
-                    IterationResult = GetDefaultIterationResult(iterationLine),
-                    IterationType = GetDefaultIterationType(iterationLine)
-                };
+                    iterationModel = ParseLineWithDefaultSelectors(iterationLine);
+                }
+                else
+                {
+                    iterationModel = ParseLineWithCustomSelectors(iterationLine, selectorModel);
+                }
 
                 resultModel.Add(iterationModel);
             }
 
             return resultModel;
+        }
+
+        private IterationModel ParseLineWithDefaultSelectors(string iterationLine)
+        {
+            return new IterationModel
+            {
+                IterationCount = GetDefaultIterationCount(iterationLine),
+                IterationDate = GetIterationDate(iterationLine),
+                IterationResult = GetDefaultIterationResult(iterationLine),
+                IterationType = GetDefaultIterationType(iterationLine)
+            };
+        }
+
+        private IterationModel ParseLineWithCustomSelectors(string iterationLine, IterationRegExSelectorModel selectorModel)
+        {
+            return new IterationModel
+            {
+                IterationCount = int.Parse(GetGenericString(iterationLine, selectorModel.TestIterationCountSelector)),
+                IterationDate = DateTime.Parse(GetGenericString(iterationLine, selectorModel.TestIterationDateSelector)),
+                IterationResult = GetGenericString(iterationLine, selectorModel.TestIterationResultSelector),
+                IterationType = GetGenericString(iterationLine, selectorModel.TestIterationTypeSelector)
+            };
         }
     }
 }

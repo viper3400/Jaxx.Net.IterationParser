@@ -8,7 +8,7 @@ namespace jaxx.net.iterationparser.tests
     public class DefaultIterationParserShould
     {
         [Fact]
-        public void ParseTestResult()
+        public void ParseTestResultWithDefaultSelectors()
         {
             var inputBuilder = new StringBuilder();
             inputBuilder.AppendLine("QA TL1; 19.08.2018; PASSED");
@@ -25,8 +25,34 @@ namespace jaxx.net.iterationparser.tests
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
+        }
 
+        [Fact]
+        public void ParseTestResultWithEmtpyCustomSelector()
+        {
+            var inputBuilder = new StringBuilder();
+            inputBuilder.AppendLine("QA TL1; 19.08.2018; PASSED");
+            inputBuilder.AppendLine("QA TL2; 20.08.2018; COND");
+            inputBuilder.Append("QA TL1; 21.08.2018; PASSED");
+            var input = inputBuilder.ToString();
 
+            var customSelector = new IterationRegExSelectorModel
+            {
+                TestIterationCountSelector = new RegExSelector(),
+                TestIterationDateSelector = new RegExSelector(),
+                TestIterationResultSelector = new RegExSelector(),
+                TestIterationTypeSelector = new RegExSelector()
+            };
+
+            var parser = new DefaultIterationParser();
+            var actual = parser.ParseTestResult(input, customSelector);            
+
+            Assert.Equal(3, actual.Count());
+
+            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
+            Assert.Equal(2, actual[1].IterationCount);
+            Assert.Equal("COND", actual[1].IterationResult);
+            Assert.Equal("QA TL2", actual[1].IterationType);
         }
 
         [Fact]
