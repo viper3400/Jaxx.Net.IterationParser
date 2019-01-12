@@ -6,7 +6,7 @@ namespace jaxx.net.iterationparser
 {
     public class DefaultIterationParser : IIterationParser
     {
-        public List<IterationModel> ParseTestResult(string input, IterationRegExSelectorModel selectorModel = null, string lineDelimiter = null)
+        public List<IterationModel> ParseTestResult(string input, IIterationRegExSelectorModel selectorModel = null, string lineDelimiter = null)
         {
             var resultModel = new List<IterationModel>();
 
@@ -147,7 +147,7 @@ namespace jaxx.net.iterationparser
             };
         }
 
-        private IterationModel ParseLineWithCustomSelectors(string iterationLine, IterationRegExSelectorModel selectorModel)
+        private IterationModel ParseLineWithCustomSelectors(string iterationLine, IIterationRegExSelectorModel selectorModel)
         {
             return new IterationModel
             {
