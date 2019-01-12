@@ -17,7 +17,7 @@ namespace jaxx.net.iterationparser.tests
             var input = inputBuilder.ToString();
 
             var parser = new DefaultIterationParser();
-            var actual = parser.ParseTestResult(input);
+            var actual = parser.ParseTestResult(input, new DefaultIterationRegExModel());
 
             Assert.Equal(3, actual.Count());
 
@@ -25,49 +25,6 @@ namespace jaxx.net.iterationparser.tests
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
-        }
-
-        [Fact]
-        public void ParseTestResultWithEmtpyCustomSelector()
-        {
-            var inputBuilder = new StringBuilder();
-            inputBuilder.AppendLine("QA TL1; 19.08.2018; PASSED");
-            inputBuilder.AppendLine("QA TL2; 20.08.2018; COND");
-            inputBuilder.Append("QA TL1; 21.08.2018; PASSED");
-            var input = inputBuilder.ToString();
-
-            var customSelector = new IterationRegExSelectorModel
-            {
-                TestIterationCountSelector = new RegExSelector(),
-                TestIterationDateSelector = new RegExSelector(),
-                TestIterationResultSelector = new RegExSelector(),
-                TestIterationTypeSelector = new RegExSelector()
-            };
-
-            var parser = new DefaultIterationParser();
-            var actual = parser.ParseTestResult(input, customSelector);            
-
-            Assert.Equal(3, actual.Count());
-
-            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
-            Assert.Equal(2, actual[1].IterationCount);
-            Assert.Equal("COND", actual[1].IterationResult);
-            Assert.Equal("QA TL2", actual[1].IterationType);
-        }
-
-        [Fact]
-        public void ParseIterationString()
-        {
-            string input = "QA TL12;09.01.2018;FAILED";
-
-            var parser = new DefaultIterationParser();
-            var resultModel = parser.ParseIterationString(input);
-
-            Assert.Equal(DateTime.Parse("09.01.2018"), resultModel.IterationDate);
-            Assert.Equal(12, resultModel.IterationCount);
-            Assert.Equal("FAILED", resultModel.IterationResult);
-            Assert.Equal("QA TL12", resultModel.IterationType);
-
         }
 
         [Fact]
@@ -101,7 +58,7 @@ namespace jaxx.net.iterationparser.tests
             var input = "QA TL1; 19.08.2018; PASSED";
 
             var parser = new DefaultIterationParser();
-            var actual = parser.GetIterationDate(input);
+            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationDateSelector));
 
             Assert.Equal(DateTime.Parse("19.08.2018"), actual);
         }
@@ -112,7 +69,7 @@ namespace jaxx.net.iterationparser.tests
             var input = "QA TL1; 19.08.18; PASSED";
 
             var parser = new DefaultIterationParser();
-            var actual = parser.GetIterationDate(input);
+            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationDateSelector));
 
             Assert.Equal(DateTime.Parse("19.08.2018"), actual);
         }
@@ -123,7 +80,7 @@ namespace jaxx.net.iterationparser.tests
             var input = "QA TL12;09.01.2018;FAILED";
 
             var parser = new DefaultIterationParser();
-            var actual = parser.GetIterationDate(input);
+            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationDateSelector));
 
             Assert.Equal(DateTime.Parse("09.01.2018"), actual);
         }
@@ -135,7 +92,7 @@ namespace jaxx.net.iterationparser.tests
             var selector = new RegExSelector { Selector = @"(\d{2}.\d{2}.(20\d{2}|\d{2}))", SelectedMatchGroup = 0 };
 
             var parser = new DefaultIterationParser();
-            var actual = parser.GetIterationDate(input, selector);
+            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationDateSelector));
 
             Assert.Equal(DateTime.Parse("19.08.2018"), actual);
         }
@@ -158,7 +115,7 @@ namespace jaxx.net.iterationparser.tests
             var input = "QA TL1; 19.08.2018; PASSED";
             
             var parser = new DefaultIterationParser();
-            var actual = parser.GetDefaultIterationType(input);
+            var actual = parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationTypeSelector);
 
             Assert.Equal("QA TL1", actual);
         }
@@ -168,7 +125,7 @@ namespace jaxx.net.iterationparser.tests
         {
             var input = "QA TL6; 19.08.2018; PASSED";
             var parser = new DefaultIterationParser();
-            var actual = parser.GetDefaultIterationCount(input);
+            var actual = int.Parse(parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationCountSelector));
             Assert.Equal(6, actual);
         }
 
@@ -177,7 +134,7 @@ namespace jaxx.net.iterationparser.tests
         {
             var input = "QA TL16;19.08.2018; PASSED";
             var parser = new DefaultIterationParser();
-            var actual = parser.GetDefaultIterationCount(input);
+            var actual = int.Parse(parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationCountSelector));
             Assert.Equal(16, actual);
         }
 
@@ -188,7 +145,7 @@ namespace jaxx.net.iterationparser.tests
             var input = "QA TL1; 19.08.2018;  PASSED  ";
 
             var parser = new DefaultIterationParser();
-            var actual = parser.GetDefaultIterationResult(input);
+            var actual = parser.GetGenericString(input, new DefaultIterationRegExModel().TestIterationResultSelector);
 
             Assert.Equal("PASSED", actual);
         }
