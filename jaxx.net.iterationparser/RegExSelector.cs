@@ -8,5 +8,6 @@ namespace jaxx.net.iterationparser
     {
         public string Selector { get; set; }
         public int SelectedMatchGroup { get; set; }
+        public Type TargetType { get; set; }
     }
 }
