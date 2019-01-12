@@ -1,6 +1,6 @@
 ﻿namespace jaxx.net.iterationparser
 {
-    public interface IIterationRegExSelectorModel
+    public interface IIterationRegExSelector
     {
         RegExSelector TestIterationCountSelector { get; set; }
         RegExSelector TestIterationDateSelector { get; set; }

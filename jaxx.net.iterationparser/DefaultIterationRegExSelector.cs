@@ -4,7 +4,7 @@ using System.Text;
 
 namespace jaxx.net.iterationparser
 {
-    public class DefaultIterationRegExModel : IIterationRegExSelectorModel
+    public class DefaultIterationRegExSelector : IIterationRegExSelector
     {
         public RegExSelector TestIterationCountSelector
         {
@@ -14,7 +14,7 @@ namespace jaxx.net.iterationparser
                 return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 2 };
             }
 
-            set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
+            set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom model");
         }
 
         public RegExSelector TestIterationDateSelector
@@ -25,7 +25,7 @@ namespace jaxx.net.iterationparser
                 return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1 };
             }
 
-            set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
+            set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
         }
 
         public RegExSelector TestIterationResultSelector
@@ -36,7 +36,7 @@ namespace jaxx.net.iterationparser
                 return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1 };
             }
 
-            set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
+            set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
         }
 
         public RegExSelector TestIterationTypeSelector
@@ -46,7 +46,7 @@ namespace jaxx.net.iterationparser
                 var defaultSelectorString = "^(.+?);";
                 return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1 };
             }
-            set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
+            set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace jaxx.net.iterationparser
 {
-    public class IterationRegExSelectorModel : IIterationRegExSelectorModel
+    public class EmptyIterationRegExSelector : IIterationRegExSelector
     {
         public RegExSelector TestIterationDateSelector { get; set; }
         public RegExSelector TestIterationCountSelector { get; set; }

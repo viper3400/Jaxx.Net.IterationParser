@@ -13,7 +13,7 @@ namespace jaxx.net.iterationparser
         /// <param name="selectorModel"></param>
         /// <param name="lineDelimiter"></param>
         /// <returns></returns>
-        public List<IterationModel> ParseTestResult(string input, IIterationRegExSelectorModel selectorModel, string lineDelimiter = null)
+        public List<IterationModel> ParseTestResult(string input, IIterationRegExSelector selectorModel, string lineDelimiter = null)
         {
             var resultModel = new List<IterationModel>();
 
@@ -52,7 +52,7 @@ namespace jaxx.net.iterationparser
             return Regex.Split(input, lineDelimiter);
         }
         
-        private IterationModel ParseIterationLine(string iterationLine, IIterationRegExSelectorModel selectorModel)
+        private IterationModel ParseIterationLine(string iterationLine, IIterationRegExSelector selectorModel)
         {
             return new IterationModel
             {
