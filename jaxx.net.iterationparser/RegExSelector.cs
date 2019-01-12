@@ -7,7 +7,6 @@ namespace jaxx.net.iterationparser
     public class RegExSelector
     {
         public string Selector { get; set; }
-        public int SelectedMatchGroup { get; set; }
-        public Type TargetType { get; set; }
+        public int SelectedMatchGroup { get; set; }     
     }
 }

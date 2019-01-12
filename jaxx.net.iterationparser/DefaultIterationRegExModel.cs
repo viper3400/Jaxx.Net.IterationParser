@@ -11,7 +11,7 @@ namespace jaxx.net.iterationparser
             get
             {
                 var defaultSelectorString = @"^.*?TL( |)(\d{1,2}).*?;";
-                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 2, TargetType = typeof(int) };
+                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 2 };
             }
 
             set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
@@ -22,7 +22,7 @@ namespace jaxx.net.iterationparser
             get
             {
                 var defaultSelectorString = @"^.*?;.*?(\d{2}.\d{2}.(20\d{2}|\d{2}))";
-                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1, TargetType = typeof(DateTime) };
+                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1 };
             }
 
             set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
@@ -33,7 +33,7 @@ namespace jaxx.net.iterationparser
             get
             {
                 var defaultSelectorString = "^.*?;.*?;(.*?)$";
-                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1, TargetType = typeof(string) };
+                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1 };
             }
 
             set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
@@ -44,7 +44,7 @@ namespace jaxx.net.iterationparser
             get
             {
                 var defaultSelectorString = "^(.+?);";
-                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1, TargetType = typeof(string) };
+                return new RegExSelector { Selector = defaultSelectorString, SelectedMatchGroup = 1 };
             }
             set => throw new NotImplementedException("Use IterationRegExSelectorModel to create a custom model");
         }
