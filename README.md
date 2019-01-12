@@ -4,7 +4,7 @@
 
 ```cs
 IIterationParser parser = new DefaultIterationParser();
-TestResultModel result = parser.ParseTestResult(input, new DefaultIterationRegExModel()):
+TestResultModel result = parser.ParseTestResult(input, new DefaultIterationRegExSelector()):
 
 ```
 
