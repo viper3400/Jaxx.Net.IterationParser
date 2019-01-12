@@ -6,6 +6,28 @@ namespace jaxx.net.iterationparser
 {
     public class DefaultIterationParser : IIterationParser
     {
+        public List<IterationModel> ParseTestResult(string input, IterationRegExSelectorModel selectorModel = null, string lineDelimiter = null)
+        {
+            var resultModel = new List<IterationModel>();
+
+            var iterations = SplitIterationLines(input, lineDelimiter);
+            foreach (var iterationLine in iterations)
+            {
+                IterationModel iterationModel;
+                if (selectorModel == null)
+                {
+                    iterationModel = ParseLineWithDefaultSelectors(iterationLine);
+                }
+                else
+                {
+                    iterationModel = ParseLineWithCustomSelectors(iterationLine, selectorModel);
+                }
+
+                resultModel.Add(iterationModel);
+            }
+
+            return resultModel;
+        }
 
         /// <summary>
         /// Parse an input string and returns it's iteration model.
@@ -113,30 +135,7 @@ namespace jaxx.net.iterationparser
             lineDelimiter = string.IsNullOrWhiteSpace(lineDelimiter) ? Environment.NewLine : lineDelimiter;
             return Regex.Split(input, lineDelimiter);
         }
-
-        public List<IterationModel> ParseTestResult(string input, IterationRegExSelectorModel selectorModel = null, string lineDelimiter = null)
-        {
-            var resultModel = new List<IterationModel>();
-
-            var iterations = SplitIterationLines(input, lineDelimiter);
-            foreach (var iterationLine in iterations)
-            {
-                IterationModel iterationModel;
-                if (selectorModel == null)
-                {
-                    iterationModel = ParseLineWithDefaultSelectors(iterationLine);
-                }
-                else
-                {
-                    iterationModel = ParseLineWithCustomSelectors(iterationLine, selectorModel);
-                }
-
-                resultModel.Add(iterationModel);
-            }
-
-            return resultModel;
-        }
-
+        
         private IterationModel ParseLineWithDefaultSelectors(string iterationLine)
         {
             return new IterationModel
