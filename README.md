@@ -1,5 +1,13 @@
 # jaxx.net.iterationparser
 
+## Usage
+
+```cs
+IIterationParser parser = new DefaultIterationParser();
+TestResultModel result = parser.ParseTestResult(input, new DefaultIterationRegExModel()):
+
+```
+
 ## Configuration
 
 ```
