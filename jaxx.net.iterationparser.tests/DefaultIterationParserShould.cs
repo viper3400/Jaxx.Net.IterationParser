@@ -134,7 +134,7 @@ namespace jaxx.net.iterationparser.tests
         [Fact]
         public void ParseIterationCountWithDefaultValueAndTwoDecimals()
         {
-            var input = "QA TL16;19.08.2018; PASSED";
+            var input = "QA TL 16;19.08.2018; PASSED";
             var parser = new DefaultIterationParser();
             var actual = int.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationCountSelector));
             Assert.Equal(16, actual);
@@ -171,6 +171,37 @@ namespace jaxx.net.iterationparser.tests
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
             Assert.Equal("QA TL2; 20.08.2018; COND", actual[1].IterationLine);
+        }
+
+        [Fact]
+        public void ParseTestResultAndDealWithUnparsableLines()
+        {
+            var inputBuilder = new StringBuilder();
+            inputBuilder.AppendLine("QA Review;19..2018");
+            inputBuilder.AppendLine(" ;20.08.2018; COND");
+            inputBuilder.Append("TOTALY WRONG CONTENT");
+            var input = inputBuilder.ToString();
+
+            var parser = new DefaultIterationParser();
+            var actual = parser.ParseTestResult(input, new DefaultIterationRegExSelector());
+
+            Assert.Equal(3, actual.Count());
+
+            Assert.Equal(DateTime.Parse("01.01.0001"), actual[0].IterationDate);
+            Assert.Equal(0, actual[0].IterationCount);
+            Assert.Equal("", actual[0].IterationResult);
+            Assert.Equal("QA Review", actual[0].IterationType);
+            Assert.Equal("QA Review;19..2018", actual[0].IterationLine);
+
+            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
+            Assert.Equal("", actual[1].IterationType);
+            Assert.Equal("COND", actual[1].IterationResult);
+
+            Assert.Equal("TOTALY WRONG CONTENT", actual[2].IterationLine);
+            Assert.Equal(DateTime.Parse("01.01.0001"), actual[2].IterationDate);
+            Assert.Equal("", actual[2].IterationResult);
+            Assert.Equal(0, actual[2].IterationCount);
+            Assert.Equal("", actual[2].IterationType);
         }
     }
 }

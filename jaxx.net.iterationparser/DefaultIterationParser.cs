@@ -52,10 +52,16 @@ namespace jaxx.net.iterationparser
         
         private IterationModel ParseIterationLine(string iterationLine, IIterationRegExSelector selectorModel)
         {
+            int iterationCount;            
+            int.TryParse(GetGenericString(iterationLine, selectorModel.TestIterationCountSelector), out iterationCount);
+
+            DateTime iterationDate = new DateTime(0);
+            DateTime.TryParse(GetGenericString(iterationLine, selectorModel.TestIterationDateSelector), out iterationDate);
+            
             return new IterationModel
             {
-                IterationCount = int.Parse(GetGenericString(iterationLine, selectorModel.TestIterationCountSelector)),
-                IterationDate = DateTime.Parse(GetGenericString(iterationLine, selectorModel.TestIterationDateSelector)),
+                IterationCount = iterationCount,
+                IterationDate = iterationDate,
                 IterationResult = GetGenericString(iterationLine, selectorModel.TestIterationResultSelector),
                 IterationType = GetGenericString(iterationLine, selectorModel.TestIterationTypeSelector),
                 IterationLine = iterationLine
