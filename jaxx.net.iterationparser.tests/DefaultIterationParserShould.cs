@@ -28,7 +28,7 @@ namespace jaxx.net.iterationparser.tests
         }
 
         [Fact]
-        public void SplitIterationLinesWithEnvironmentNewLine()
+        public void SplitIterationLinesWithDefaultLineSelector()
         {
             var inputBuilder = new StringBuilder();
             inputBuilder.AppendLine("QA TL1; 19.08.2018; PASSED");
@@ -37,7 +37,7 @@ namespace jaxx.net.iterationparser.tests
             var input = inputBuilder.ToString();
 
             var parser = new DefaultIterationParser();
-            var actual = parser.SplitIterationLines(input);
+            var actual = parser.SplitIterationLines(input, new DefaultIterationRegExSelector().SingleLineSelector.Selector);
             Assert.Equal(3, actual.Count());
             Assert.Equal("QA TL1; 21.08.2018; PASSED", actual[2]);
         }

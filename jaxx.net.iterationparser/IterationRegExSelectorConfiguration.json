@@ -1,8 +1,9 @@
 {
   "RegularExpressionFilters": {
     "SingleLineSelector": {
-      "Regex": "###",
-      "MatchGroup": "0"
+      "RegExSelector": {
+        "Selector": "\r\n"
+      }
     },
     "IterationRegExSelector": {
       "TestIterationCountSelector": {

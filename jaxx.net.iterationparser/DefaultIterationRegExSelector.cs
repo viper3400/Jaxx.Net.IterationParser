@@ -48,5 +48,15 @@ namespace jaxx.net.iterationparser
             }
             set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
         }
+
+        public RegExSelector SingleLineSelector
+        {
+            get
+            {
+                var defaultSelectorString = "\r\n";
+                return new RegExSelector { Selector = defaultSelectorString };
+            }
+            set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
+        }
     }
 }

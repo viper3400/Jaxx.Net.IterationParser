@@ -13,11 +13,11 @@ namespace jaxx.net.iterationparser
         /// <param name="selectorModel"></param>
         /// <param name="lineDelimiter"></param>
         /// <returns></returns>
-        public List<IterationModel> ParseTestResult(string input, IIterationRegExSelector selectorModel, string lineDelimiter = null)
+        public List<IterationModel> ParseTestResult(string input, IIterationRegExSelector selectorModel)
         {
             var resultModel = new List<IterationModel>();
 
-            var iterations = SplitIterationLines(input, lineDelimiter);
+            var iterations = SplitIterationLines(input, selectorModel.SingleLineSelector.Selector);
             foreach (var iterationLine in iterations)
             {               
                 var iterationModel = ParseIterationLine(iterationLine, selectorModel);               
@@ -43,12 +43,10 @@ namespace jaxx.net.iterationparser
         /// Returns an string array, parsed and splitted by the given line delimiter.
         /// </summary>
         /// <param name="input">The input string.</param>
-        /// <param name="lineDelimiter">The line delimiter, default is null, then the default
-        /// delimiter will be used: Environment.NewLine</param>
+        /// <param name="lineDelimiter">The line delimiter.</param>
         /// <returns>An array of string.</returns>
-        internal string[] SplitIterationLines(string input, string lineDelimiter = null)
+        internal string[] SplitIterationLines(string input, string lineDelimiter)
         {
-            lineDelimiter = string.IsNullOrWhiteSpace(lineDelimiter) ? Environment.NewLine : lineDelimiter;
             return Regex.Split(input, lineDelimiter);
         }
         

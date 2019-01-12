@@ -18,14 +18,16 @@ TestResultModel result = parser.ParseTestResult(input, new JsonFileIterationRegE
 
 ```
 
-The following configuration is the same configuration as with the DefaultIterationRegExSelector:
+The following configuration is the same configuration as with the DefaultIterationRegExSelector.
+SingleLineSelector:RegExSelector takes no "SelectedMatchGroup".
 
 ```json
 {
   "RegularExpressionFilters": {
     "SingleLineSelector": {
-      "Regex": "###",
-      "MatchGroup": "0"
+      "RegExSelector": {
+        "Selector": "\r\n"
+      }
     },
     "IterationRegExSelector": {
       "TestIterationCountSelector": {

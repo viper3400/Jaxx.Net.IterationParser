@@ -65,5 +65,18 @@ namespace jaxx.net.iterationparser
 
             set => throw new NotImplementedException();
         }
+
+        public RegExSelector SingleLineSelector
+        {
+            get
+            {
+                return new RegExSelector
+                {
+                    Selector = Configuration.GetSection($"RegularExpressionFilters:SingleLineSelector:RegExSelector:Selector").Value
+                };
+            }
+
+            set => throw new NotImplementedException();
+        }
     }
 }
