@@ -10,5 +10,6 @@ namespace jaxx.net.iterationparser
         public string IterationType { get; set; }
         public int IterationCount { get; set; }
         public string IterationResult { get; set; }
+        public string IterationLine { get; set; }
     }
 }

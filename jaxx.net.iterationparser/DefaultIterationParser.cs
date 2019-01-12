@@ -57,7 +57,8 @@ namespace jaxx.net.iterationparser
                 IterationCount = int.Parse(GetGenericString(iterationLine, selectorModel.TestIterationCountSelector)),
                 IterationDate = DateTime.Parse(GetGenericString(iterationLine, selectorModel.TestIterationDateSelector)),
                 IterationResult = GetGenericString(iterationLine, selectorModel.TestIterationResultSelector),
-                IterationType = GetGenericString(iterationLine, selectorModel.TestIterationTypeSelector)
+                IterationType = GetGenericString(iterationLine, selectorModel.TestIterationTypeSelector),
+                IterationLine = iterationLine
             };
         }
     }

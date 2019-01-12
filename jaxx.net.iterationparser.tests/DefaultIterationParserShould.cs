@@ -25,6 +25,7 @@ namespace jaxx.net.iterationparser.tests
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
+            Assert.Equal("QA TL2; 20.08.2018; COND", actual[1].IterationLine);
         }
 
         [Fact]
@@ -109,6 +110,7 @@ namespace jaxx.net.iterationparser.tests
             Assert.Equal("19.08.2018", actual);
         }
 
+
         [Fact]
         public void ParseIterationTypeWithDefaultValue()
         {
@@ -168,6 +170,7 @@ namespace jaxx.net.iterationparser.tests
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
+            Assert.Equal("QA TL2; 20.08.2018; COND", actual[1].IterationLine);
         }
     }
 }
