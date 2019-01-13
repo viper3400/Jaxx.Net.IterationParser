@@ -1,4 +1,4 @@
-# jaxx.net.iterationparser
+# Jaxx.Net.IterationParser
 
 ## Usage
 
