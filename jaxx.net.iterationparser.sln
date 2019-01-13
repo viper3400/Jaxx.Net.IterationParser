@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jaxx.Net.IterationParser", "jaxx.net.iterationparser\Jaxx.Net.IterationParser.csproj", "{A26EBB6E-D144-4C14-ADA5-CC7788810824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jaxx.Net.IterationParser", "Jaxx.Net.IterationParser\Jaxx.Net.IterationParser.csproj", "{A26EBB6E-D144-4C14-ADA5-CC7788810824}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jaxx.Net.IterationParser.Tests", "jaxx.net.iterationparser.tests\Jaxx.Net.IterationParser.Tests.csproj", "{F92CD628-3240-4F68-B4E8-91E355A57A75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jaxx.Net.IterationParser.Tests", "Jaxx.Net.IterationParser.Tests\Jaxx.Net.IterationParser.Tests.csproj", "{F92CD628-3240-4F68-B4E8-91E355A57A75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

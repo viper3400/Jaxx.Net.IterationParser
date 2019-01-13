@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\jaxx.net.iterationparser\Jaxx.Net.IterationParser.csproj" />
+    <ProjectReference Include="..\Jaxx.Net.IterationParser\Jaxx.Net.IterationParser.csproj" />
   </ItemGroup>
 
 </Project>
