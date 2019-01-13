@@ -1,4 +1,4 @@
-﻿namespace jaxx.net.iterationparser
+﻿namespace Jaxx.Net.IterationParser
 {
     public interface IIterationRegExSelector
     {

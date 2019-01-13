@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace jaxx.net.iterationparser
+namespace Jaxx.Net.IterationParser
 {
     public class DefaultIterationParser : IIterationParser
     {

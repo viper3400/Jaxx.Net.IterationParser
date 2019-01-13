@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace jaxx.net.iterationparser
+namespace Jaxx.Net.IterationParser
 {
     public class RegExSelector
     {
