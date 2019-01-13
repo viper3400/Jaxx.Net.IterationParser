@@ -10,6 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="GenericRegExSelectorConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="IterationRegExSelectorConfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

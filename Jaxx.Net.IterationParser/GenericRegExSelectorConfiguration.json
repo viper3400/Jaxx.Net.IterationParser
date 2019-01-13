@@ -1,0 +1,31 @@
+{
+  "RegularExpressionFilters": {
+    "SingleLineSelector": {
+      "RegExSelector": {
+        "Selector": "\r\n"
+      }
+    },
+    "RegExSelectors": [
+      {
+        "Name": "TestIterationCountSelector",
+        "Selector": "^.*?TL( |)(\\d{1,2}).*?;",
+        "SelectedMatchGroup": "2"
+      },
+      {
+        "Name": "TestIterationDateSelector",
+        "Selector": "^.*?;.*?(\\d{2}.\\d{2}.(20\\d{2}|\\d{2}))",
+        "SelectedMatchGroup": "1"
+      },
+      {
+        "Name": "TestIterationResultSelector",
+        "Selector": "^.*?;.*?;(.*?)$",
+        "SelectedMatchGroup": "1"
+      },
+      {
+        "Name": "TestIterationTypeSelector",
+        "Selector": "^(.+?);",
+        "SelectedMatchGroup": "1"
+      }
+    ]
+  }
+}

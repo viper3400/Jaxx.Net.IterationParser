@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Jaxx.Net.IterationParser
 {
-    public class DefaultIterationParser : IIterationParser
+    public class DefaultIterationParser : IIterationParser, IGenericParser
     {
         /// <summary>
         /// Parses the given input string into a list of iteration models.
@@ -25,6 +25,11 @@ namespace Jaxx.Net.IterationParser
             }
 
             return resultModel;
+        }
+
+        public Dictionary<string, List<GenericResultModel>> ParseTestResult(string input, List<RegExSelector> selectorModel)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
