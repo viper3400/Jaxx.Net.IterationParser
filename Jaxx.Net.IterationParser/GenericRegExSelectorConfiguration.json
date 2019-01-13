@@ -7,22 +7,22 @@
     },
     "RegExSelectors": [
       {
-        "Name": "TestIterationCountSelector",
+        "Name": "IterationCount",
         "Selector": "^.*?TL( |)(\\d{1,2}).*?;",
         "SelectedMatchGroup": "2"
       },
       {
-        "Name": "TestIterationDateSelector",
+        "Name": "IterationDate",
         "Selector": "^.*?;.*?(\\d{2}.\\d{2}.(20\\d{2}|\\d{2}))",
         "SelectedMatchGroup": "1"
       },
       {
-        "Name": "TestIterationResultSelector",
+        "Name": "IterationResult",
         "Selector": "^.*?;.*?;(.*?)$",
         "SelectedMatchGroup": "1"
       },
       {
-        "Name": "TestIterationTypeSelector",
+        "Name": "IterationType",
         "Selector": "^(.+?);",
         "SelectedMatchGroup": "1"
       }

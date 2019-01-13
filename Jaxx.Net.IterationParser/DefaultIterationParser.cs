@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Jaxx.Net.IterationParser
@@ -27,9 +28,32 @@ namespace Jaxx.Net.IterationParser
             return resultModel;
         }
 
-        public Dictionary<string, List<GenericResultModel>> ParseTestResult(string input, List<RegExSelector> selectorModel)
-        {
-            throw new NotImplementedException();
+        public List<Dictionary<string, string>> ParseTestResult(string input, List<RegExSelector> selectorModel)
+        {            
+            var iterationSelectorModel = new EmptyIterationRegExSelector
+            {
+                SingleLineSelector = selectorModel.FirstOrDefault(s => s.Name == "SingleLineSelector"),
+                TestIterationCountSelector = selectorModel.FirstOrDefault(s => s.Name == "IterationCount"),
+                TestIterationDateSelector = selectorModel.FirstOrDefault(s => s.Name == "IterationDate"),
+                TestIterationResultSelector = selectorModel.FirstOrDefault(s => s.Name == "IterationResult"),
+                TestIterationTypeSelector = selectorModel.FirstOrDefault(s => s.Name == "IterationType")
+            };
+
+            var iterationResults = ParseTestResult(input, iterationSelectorModel);
+            var resultList = new List<Dictionary<string, string>>();
+
+            foreach (var iteration in iterationResults)
+            {
+                var iterationResult = new Dictionary<string, string>();
+                iterationResult.Add("IterationCount", iteration.IterationCount.ToString());
+                iterationResult.Add("IterationDate", iteration.IterationDate.ToString());
+                iterationResult.Add("IterationResult", iteration.IterationResult);
+                iterationResult.Add("IterationType", iteration.IterationType);
+                iterationResult.Add("IterationLine", iteration.IterationLine);
+                resultList.Add(iterationResult);
+            }
+
+            return resultList;
         }
 
         /// <summary>

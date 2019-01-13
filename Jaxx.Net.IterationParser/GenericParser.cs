@@ -6,7 +6,7 @@ namespace Jaxx.Net.IterationParser
 {
     public class GenericParser : IGenericParser
     {
-        public Dictionary<string, List<GenericResultModel>> ParseTestResult(string input, List<RegExSelector> selectorModel)
+        public List<Dictionary<string, string>> ParseTestResult(string input, List<RegExSelector> selectorModel)
         {
             throw new NotImplementedException();
         }

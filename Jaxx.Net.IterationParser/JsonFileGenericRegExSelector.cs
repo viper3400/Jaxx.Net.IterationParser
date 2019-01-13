@@ -36,6 +36,8 @@ namespace Jaxx.Net.IterationParser
 
                     result.Add(regExSelector);
                 }
+
+                result.Add(SingleLineSelector);
                 return result;
             }
         }
@@ -46,6 +48,7 @@ namespace Jaxx.Net.IterationParser
             {
                 return new RegExSelector
                 {
+                    Name = "SingleLineSelector",
                     Selector = Configuration.GetSection($"RegularExpressionFilters:SingleLineSelector:RegExSelector:Selector").Value
                 };
             }
