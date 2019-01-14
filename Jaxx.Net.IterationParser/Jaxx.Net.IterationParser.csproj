@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/viper3400/Jaxx.Net.IterationParser</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/viper3400/Jaxx.Net.IterationParser/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/viper3400/Jaxx.Net.IterationParser</RepositoryUrl>
+    <Company>Jaxx</Company>
+    <Authors>Jan Graefe</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
