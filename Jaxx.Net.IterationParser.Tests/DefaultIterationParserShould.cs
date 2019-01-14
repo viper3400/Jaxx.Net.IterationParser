@@ -96,7 +96,7 @@ namespace Jaxx.Net.IterationParser.tests
             var parser = new DefaultIterationParser();
             var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector));
 
-            Assert.Equal(DateTime.ParseExact("19.08.2018","dd.MM.yyyy", CultureInfo.InvariantCulture), actual);
+            Assert.Equal(DateTime.ParseExact("19.08.2018","dd/MM/yyyy", CultureInfo.InvariantCulture), actual);
         }
 
         [Fact]
