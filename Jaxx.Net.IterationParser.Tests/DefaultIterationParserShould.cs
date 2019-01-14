@@ -60,9 +60,11 @@ namespace Jaxx.Net.IterationParser.tests
             var input = "QA TL1; 19.08.2018; PASSED";
 
             var parser = new DefaultIterationParser();
-            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector));
+            var actual = DateTime.ParseExact
+                (parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector),
+                "dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-            Assert.Equal(DateTime.Parse("19.08.2018"), actual);
+            Assert.Equal(DateTime.ParseExact("19.08.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual);
         }
 
         [Fact]
@@ -71,9 +73,11 @@ namespace Jaxx.Net.IterationParser.tests
             var input = "QA TL1; 19.08.18; PASSED";
 
             var parser = new DefaultIterationParser();
-            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector));
+            var actual = DateTime.ParseExact
+                (parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector),
+                "dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-            Assert.Equal(DateTime.Parse("19.08.2018"), actual);
+            Assert.Equal(DateTime.ParseExact("19.08.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual);
         }
 
         [Fact]
@@ -82,9 +86,11 @@ namespace Jaxx.Net.IterationParser.tests
             var input = "QA TL12;09.01.2018;FAILED";
 
             var parser = new DefaultIterationParser();
-            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector));
+            var actual = DateTime.ParseExact
+                (parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector),
+                "dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-            Assert.Equal(DateTime.Parse("09.01.2018"), actual);
+            Assert.Equal(DateTime.ParseExact("09.01.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual);
         }
 
         [Fact]
@@ -169,7 +175,7 @@ namespace Jaxx.Net.IterationParser.tests
 
             Assert.Equal(3, actual.Count());
 
-            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
+            Assert.Equal(DateTime.ParseExact("20.08.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual[1].IterationDate);
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
@@ -190,7 +196,7 @@ namespace Jaxx.Net.IterationParser.tests
 
             Assert.Equal(3, actual.Count());
 
-            Assert.Equal(DateTime.Parse("20.08.2018").ToString(), actual[1]["IterationDate"]);
+            Assert.Equal(DateTime.ParseExact("20.08.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture).ToString(), actual[1]["IterationDate"]);
             Assert.Equal("2", actual[1]["IterationCount"]);
             Assert.Equal("COND", actual[1]["IterationResult"]);
             Assert.Equal("QA TL2", actual[1]["IterationType"]);
@@ -211,18 +217,18 @@ namespace Jaxx.Net.IterationParser.tests
 
             Assert.Equal(3, actual.Count());
 
-            Assert.Equal(DateTime.Parse("01.01.0001"), actual[0].IterationDate);
+            Assert.Equal(DateTime.ParseExact("01.01.0001", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual[0].IterationDate);
             Assert.Equal(0, actual[0].IterationCount);
             Assert.Equal("", actual[0].IterationResult);
             Assert.Equal("QA Review", actual[0].IterationType);
             Assert.Equal("QA Review;19..2018", actual[0].IterationLine);
 
-            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
+            Assert.Equal(DateTime.ParseExact("20.08.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual[1].IterationDate);
             Assert.Equal("", actual[1].IterationType);
             Assert.Equal("COND", actual[1].IterationResult);
 
             Assert.Equal("TOTALY WRONG CONTENT", actual[2].IterationLine);
-            Assert.Equal(DateTime.Parse("01.01.0001"), actual[2].IterationDate);
+            Assert.Equal(DateTime.ParseExact("01.01.0001", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual[2].IterationDate);
             Assert.Equal("", actual[2].IterationResult);
             Assert.Equal(0, actual[2].IterationCount);
             Assert.Equal("", actual[2].IterationType);
