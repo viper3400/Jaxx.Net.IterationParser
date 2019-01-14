@@ -1,0 +1,21 @@
+version: 1.0.0.{build}-pre
+branches:
+  only:
+  - master
+image: Visual Studio 2017
+clone_depth: 1
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+before_build:
+- cmd: dotnet restore ./Jaxx.Net.IterationParser/Jaxx.Net.IterationParser.csproj --verbosity m
+build:
+  verbosity: minimal
+artifacts:
+- path: '**\*.nupkg'
+  name: Jaxx.Net.IterationParser
