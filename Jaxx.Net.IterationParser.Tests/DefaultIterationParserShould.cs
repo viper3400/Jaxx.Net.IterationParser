@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Xunit;
@@ -21,7 +22,7 @@ namespace Jaxx.Net.IterationParser.tests
 
             Assert.Equal(3, actual.Count());
 
-            Assert.Equal(DateTime.Parse("20.08.2018"), actual[1].IterationDate);
+            Assert.Equal(DateTime.ParseExact("20.08.2018","dd.MM.yyyy", CultureInfo.InvariantCulture), actual[1].IterationDate);
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
@@ -95,7 +96,7 @@ namespace Jaxx.Net.IterationParser.tests
             var parser = new DefaultIterationParser();
             var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector));
 
-            Assert.Equal(DateTime.Parse("19.08.2018"), actual);
+            Assert.Equal(DateTime.ParseExact("19.08.2018","dd.MM.yyyy", CultureInfo.InvariantCulture), actual);
         }
 
         [Fact]
