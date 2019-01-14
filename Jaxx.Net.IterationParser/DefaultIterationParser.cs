@@ -85,7 +85,8 @@ namespace Jaxx.Net.IterationParser
             int.TryParse(GetGenericString(iterationLine, selectorModel.TestIterationCountSelector), out iterationCount);
 
             DateTime iterationDate = new DateTime(0);
-            DateTime.TryParse(GetGenericString(iterationLine, selectorModel.TestIterationDateSelector), out iterationDate);
+            DateTime.TryParseExact(GetGenericString(iterationLine, selectorModel.TestIterationDateSelector),
+                "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.AdjustToUniversal, out iterationDate);
             
             return new IterationModel
             {
