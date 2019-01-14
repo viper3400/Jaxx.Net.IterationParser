@@ -94,9 +94,11 @@ namespace Jaxx.Net.IterationParser.tests
             var selector = new RegExSelector { Selector = @"(\d{2}.\d{2}.(20\d{2}|\d{2}))", SelectedMatchGroup = 0 };
 
             var parser = new DefaultIterationParser();
-            var actual = DateTime.Parse(parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector));
+            var actual = DateTime.ParseExact
+                (parser.GetGenericString(input, new DefaultIterationRegExSelector().TestIterationDateSelector),
+                "dd.MM.yyyy",CultureInfo.InvariantCulture);
 
-            Assert.Equal(DateTime.ParseExact("19.08.2018","dd/MM/yyyy", CultureInfo.InvariantCulture), actual);
+            Assert.Equal(DateTime.ParseExact("19.08.2018","dd.MM.yyyy", CultureInfo.InvariantCulture), actual);
         }
 
         [Fact]
