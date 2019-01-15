@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace Jaxx.Net.IterationParser.tests
+namespace Jaxx.Net.IterationParser.Tests
 {
     public class DefaultIterationParserShould
     {
