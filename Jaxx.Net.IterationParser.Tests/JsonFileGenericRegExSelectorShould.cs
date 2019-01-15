@@ -20,7 +20,7 @@ namespace Jaxx.Net.IterationParser.Tests
             var fileSelector = new JsonFileGenericRegExSelector("GenericRegExSelectorConfiguration.json");
             var selectors = fileSelector.RegExSelectors;
 
-            Assert.Equal(5, selectors.Count);
+            Assert.Equal(6, selectors.Count);
             Assert.Equal("IterationCount", selectors[0].Name);
             Assert.Equal("^.*?TL( |)(\\d{1,2}).*?;", selectors[0].Selector);
             Assert.Equal(2, selectors[0].SelectedMatchGroup);

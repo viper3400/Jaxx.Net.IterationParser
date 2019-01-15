@@ -25,6 +25,12 @@
         "Name": "IterationType",
         "Selector": "^(.+?);",
         "SelectedMatchGroup": "1"
+      },
+
+      {
+        "Name": "CompleteLine",
+        "Selector": "^(.+?)$",
+        "SelectedMatchGroup": "1"
       }
     ]
   }
