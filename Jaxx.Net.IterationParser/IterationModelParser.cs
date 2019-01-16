@@ -36,7 +36,9 @@ namespace Jaxx.Net.IterationParser
                 int.TryParse(iteration.FirstOrDefault(s => s.Key == "IterationCount").Value, out iterationCount);
 
                 DateTime iterationDate = new DateTime(0);
-                DateTime.TryParse(iteration.FirstOrDefault(s => s.Key == "IterationDate").Value, out iterationDate);
+                DateTime.TryParseExact(iteration.FirstOrDefault(s => s.Key == "IterationDate").Value,
+                    "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None, out iterationDate);
 
                 iterationModel.IterationCount = iterationCount;
                 iterationModel.IterationDate = iterationDate;
