@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Jaxx.Net.IterationParser
 {
+    [Obsolete("Not used any more", false)]
     public class DefaultIterationParser : IIterationParser, IGenericParser
     {
         /// <summary>
