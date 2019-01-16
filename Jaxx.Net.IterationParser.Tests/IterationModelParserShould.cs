@@ -23,7 +23,7 @@ namespace Jaxx.Net.IterationParser.Tests
 
             Assert.Equal(3, actual.Count());
 
-            Assert.Equal(DateTime.ParseExact("20.08.2018","dd.MM.yyyy", CultureInfo.InvariantCulture), actual[1].IterationDate);
+            Assert.Equal(DateTime.ParseExact("20.08.2018 00:00:00","dd.MM.yyyy hh:mm:ss", CultureInfo.InvariantCulture), actual[1].IterationDate);
             Assert.Equal(2, actual[1].IterationCount);
             Assert.Equal("COND", actual[1].IterationResult);
             Assert.Equal("QA TL2", actual[1].IterationType);
@@ -71,7 +71,7 @@ namespace Jaxx.Net.IterationParser.Tests
             Assert.Equal("QA Review", actual[0].IterationType);
             Assert.Equal("QA Review;19..2018", actual[0].IterationLine);
 
-            Assert.Equal(DateTime.ParseExact("20.08.2018", "dd.MM.yyyy", CultureInfo.InvariantCulture), actual[1].IterationDate);
+            Assert.Equal(DateTime.ParseExact("20.08.2018 00:00:00", "dd.MM.yyyy hh:mm:ss", CultureInfo.InvariantCulture), actual[1].IterationDate);
             Assert.Equal("", actual[1].IterationType);
             Assert.Equal("COND", actual[1].IterationResult);
 
