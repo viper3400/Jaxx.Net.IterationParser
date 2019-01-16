@@ -25,7 +25,7 @@ namespace Jaxx.Net.IterationParser.Tests
             Assert.Equal("2", actual[1]["IterationCount"]);
             Assert.Equal("COND", actual[1]["IterationResult"]);
             Assert.Equal("QA TL2", actual[1]["IterationType"]);
-            Assert.Equal("QA TL2; 20.08.2018; COND", actual[1]["CompleteLine"]);
+            Assert.Equal("QA TL2; 20.08.2018; COND", actual[1]["IterationLine"]);
         }
     }
 }

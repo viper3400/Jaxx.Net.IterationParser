@@ -10,6 +10,7 @@ namespace Jaxx.Net.IterationParser
         public RegExSelector TestIterationDateSelector { get; set; }
         public RegExSelector TestIterationCountSelector { get; set; }
         public RegExSelector TestIterationTypeSelector { get; set; }
-        public RegExSelector TestIterationResultSelector { get; set; }        
+        public RegExSelector TestIterationResultSelector { get; set; } 
+        public RegExSelector TestIterationLineSelector { get; set; }
     }
 }

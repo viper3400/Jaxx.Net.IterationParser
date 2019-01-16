@@ -23,6 +23,7 @@ namespace Jaxx.Net.IterationParser
                 selectorModel.TestIterationDateSelector,
                 selectorModel.TestIterationResultSelector,
                 selectorModel.TestIterationTypeSelector,
+                selectorModel.TestIterationLineSelector,
                 selectorModel.SingleLineSelector
             };
 
@@ -43,6 +44,8 @@ namespace Jaxx.Net.IterationParser
                     .FirstOrDefault(s => s.Key == "IterationResult").Value;
                 iterationModel.IterationType = iteration
                     .FirstOrDefault(s => s.Key == "IterationType").Value;
+                iterationModel.IterationLine = iteration
+                    .FirstOrDefault(s => s.Key == "IterationLine").Value;
                 resultList.Add(iterationModel);
             }
 

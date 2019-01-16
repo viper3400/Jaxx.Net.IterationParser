@@ -28,7 +28,7 @@
       },
 
       {
-        "Name": "CompleteLine",
+        "Name": "IterationLine",
         "Selector": "^(.+?)$",
         "SelectedMatchGroup": "1"
       }

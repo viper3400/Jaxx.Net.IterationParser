@@ -66,6 +66,16 @@ namespace Jaxx.Net.IterationParser
             set => throw new NotImplementedException();
         }
 
+        public RegExSelector TestIterationLineSelector
+        {
+            get
+            {
+                return GetSelectorFromConfig("TestIterationLineSelector");
+            }
+
+            set => throw new NotImplementedException();
+        }
+
         public RegExSelector SingleLineSelector
         {
             get

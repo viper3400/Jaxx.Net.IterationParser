@@ -29,6 +29,12 @@
           "Selector": "^(.+?);",
           "SelectedMatchGroup": "1"
         }
+      },
+      "TestIterationLineSelector": {
+        "RegExSelector": {
+          "Selector": "^(.+?)$",
+          "SelectedMatchGroup": "1"
+        }
       }
     }
   }

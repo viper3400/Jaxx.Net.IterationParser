@@ -49,6 +49,16 @@ namespace Jaxx.Net.IterationParser
             set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
         }
 
+        public RegExSelector TestIterationLineSelector
+        {
+            get
+            {
+                var defaultSelectorString = "^(.+?)$";
+                return new RegExSelector { Name = "IterationLine", Selector = defaultSelectorString, SelectedMatchGroup = 1 };
+            }
+            set => throw new NotImplementedException("Use IIterationRegExSelector to create a custom selector.");
+        }
+
         public RegExSelector SingleLineSelector
         {
             get

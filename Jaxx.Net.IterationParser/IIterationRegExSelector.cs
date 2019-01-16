@@ -7,5 +7,6 @@
         RegExSelector TestIterationDateSelector { get; set; }
         RegExSelector TestIterationResultSelector { get; set; }
         RegExSelector TestIterationTypeSelector { get; set; }
+        RegExSelector TestIterationLineSelector { get; set; }
     }
 }
